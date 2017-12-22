@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+*****************************************************************************************************************************
+Keeping in mind to some of the obstacles I have faced during my studies, I decided to develop a platform for students, graduates or anyone who is interested to find a person who shares the same goal as her/him, and work together as a team, support and help each other to achieve that goal. This platform is also for people who want to learn a new skill and are in need of a buddy who can help them learn that skill, and also to share your own skills and teach who ever wants to learn. Hence, this platform encourages teamwork, support, knowledge sharing and working together for the betterment of all.
+*****************************************************************************************************************************
 
-Things you may want to cover:
+* Ruby version 
+2.4
 
-* Ruby version
+* Rails version
+5.0.6
 
 * System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+-> Mysql2
+-> Sphinx

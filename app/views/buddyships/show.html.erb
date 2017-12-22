@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @buddyship.user_id %>
+</p>
+
+<p>
+  <strong>Buddy:</strong>
+  <%= @buddyship.buddy_id %>
+</p>
+
+<p>
+  <strong>Create:</strong>
+  <%= @buddyship.create %>
+</p>
+
+<p>
+  <strong>Destroy:</strong>
+  <%= @buddyship.destroy %>
+</p>
+
+<%= link_to 'Edit', edit_buddyship_path(@buddyship) %> |
+<%= link_to 'Back', buddyships_path %>

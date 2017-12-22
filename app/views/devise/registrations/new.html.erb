@@ -1,0 +1,62 @@
+<div class="row-fluid">
+  <div class="span12">
+    <div class="loginpage-cont signupPage">
+      <div class="loginpage-inner">
+        <h3>Start your journey towards a skillful life today!</h3>
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <% if resource.errors.any? %>
+
+            <div class="alert alert-error alert-block">
+              <button type="button" class="close" data-dismiss="alert">x</button>
+              <ul>
+                <% resource.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="sign-form form-horizontal span10 wrapper-center">
+            <div class='control-group'>
+              <%= f.label :name, 'Name:', class: 'control-label .col-md-4' %>
+              <div class="controls .col-md-8">
+                <%= f.text_field :name, class: "text-fields", required: true %>
+              </div>
+            </div>
+
+            <div class="control-group paddingForAlerts">
+              <%= f.label :email, 'Email:', class: 'control-label .col-md-4' %>
+              <div class="controls .col-md-8">
+                <%= f.email_field :email, class: 'text-fields', required: true %>
+              </div>
+            </div>
+
+            <div class='control-group'>
+              <%= f.label :password, 'Password:', class: 'control-label .col-md-4' %>
+               <div class="controls .col-md-8">
+                  <%= f.password_field :password, class: 'text-fields', autocomplete: 'off', required: true %>
+                  <% if @minimum_password_length %>
+                    <em style="padding-left: 12px; margin-top: 0px; font-size: 12px">(<%= @minimum_password_length %> characters minimum)</em>
+                  <% end %>
+              </div>
+            </div>
+
+            <div class='control-group'>
+              <%= f.label :password_confirmation, 'Password (Confirm):', class: 'control-label .col-md-4' %>
+              <div class="controls .col-md-8">
+                <%= f.password_field :password_confirmation, class: 'text-fields', autocomplete: 'off', required: true %>
+              </div>
+            </div>
+
+            <div class='actions'>
+              <%= f.submit 'Register', class: 'btn btn-outline btn-secondary pull-right' %>
+            </div>
+          </div>
+
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

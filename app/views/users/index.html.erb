@@ -1,27 +1,23 @@
-<p id="notice"><%= notice %></p>
+<div style="margin-top: 70px;" class="row-fluid">
+  <div class="user-profile">
+    <h3>Welcome to <p class="homepage-title">Tech|Buddy</p></h3>
+    <p style="color:#16e6e9; font-style: italic;">Buddy-up to share your knowledge and learn from others!</p>
+    <p>Here you can find students from your campus and connect with them if you like their skills and want to learn from them.</br>
+    You can also connect to create your course group projects, study groups or your personal projects.</p>
+  </div>
+  <% if !user_signed_in? %>
+    <div style="margin:50px auto; width: 50%;">
+      <div class="pull-left" style="margin-right: 10px; width:40%">
+        <p class="button-heading">Start learning and sharing today!</p>
+        <div style="position: relative; width: 100%;"><%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-outline-homepage btn-homepage' %></div>
+      </div>
+      <div class="pull-right", style="margin-left: 10px; width:40%">
+        <p class="button-heading">Already a user?</p>
+        <div style="position: relative; width: 100%;"><%= link_to 'Sign in',  "/users/sign_in", class: 'btn btn-outline-homepage btn-homepage' %></div>
+      </div>  
+    </div>
+  <% end %>
+</div>
 
-<h1>Users</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New User', new_user_path %>

@@ -1,0 +1,14 @@
+<% if @users.blank? %>
+	<p>No results found</p>
+<% else %>
+	<div class="results">
+		<% @users.each do |user| %>
+			<%= link_to user do %>
+		    <div style="margin: 20px;" class="result">
+			    <%= image_tag user.picture.url(:thumb), class: "buddy-picture-style" %>
+			    <i class="search-result-name"><%= user.name.titleize %></i>
+		    </div>
+		  <% end %>
+	  <% end %>
+	</div>
+<% end %>

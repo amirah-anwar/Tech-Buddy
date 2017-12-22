@@ -1,22 +1,96 @@
-<%= form_for(user) do |f| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<div class="row-fluid">
+  <div class="span12">
+    <div class="loginpage-cont signupPage">
+      <div class="loginpage-inner">
+        <h3>Let your future buddies know about yourself!</h3>
+        <%= form_for(user) do |f| %>
 
-      <ul>
-      <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+          <% if user.errors.any? %>
+            <div class="alert alert-error alert-block">
+              <button type="button" class="close" data-dismiss="alert">x</button>
+              <ul>
+                <% user.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="sign-form form-horizontal span10 wrapper-center">
+
+            <%= image_tag user.picture.url(:thumb), class: "edit-picture-style" %>
+            <%= f.file_field :picture %>
+
+            <div class='control-group'>
+              <%= f.label :name, 'Name:', class: 'control-label .col-md-4', style: "margin-top: 10px;" %>
+              <div class="controls .col-md-8">
+                <%= f.text_field :name, class: "text-fields", maxlength: 50, required: true %>
+              </div>
+            </div>
+
+            <div class="field">
+              <%= f.label :status, "Buddy-Status:", class: 'control-label .col-md-4', style: "margin-top: 10px;" %>
+              <div class="controls .col-md-8">
+                <%= f.select :status, User::STATUS, {include_blank: "Select your Buddy-Status"},class: 'text-fields drop-down-select', required: true %>
+              </div>
+            </div>
+
+             <div class="control-group paddingForAlerts">
+              <%= f.label :phone, "Phone:", class: 'control-label .col-md-4', style: "margin-top: 10px;" %>
+              <div class="controls .col-md-8">
+                <%= f.text_field :phone, placeholder: "(xxx)-xxx-xxxx", maxlength: 16, class: 'text-fields' %>
+              </div>
+            </div>
+
+            <div class="control-group paddingForAlerts">
+                <%= f.label :major, "Major:", class: 'control-label .col-md-4', style: "margin-top: 10px;" %>
+              <div class="controls .col-md-8">
+                <%= f.select :major, User::MAJORS, {include_blank: 'Select your Major'}, class: 'text-fields drop-down-select' %>
+              </div>
+            </div>
+
+            <div class="control-group paddingForAlerts">
+              <%= f.label :education_level, "Education Level:", class: 'control-label .col-md-4', style: "margin-top: 10px;" %>
+              <div class="controls .col-md-8">
+                <%= f.select :education_level, User::EDUCATION_LEVELS, {include_blank: "Select your education level"}, class: 'text-fields drop-down-select' %>
+              </div>
+            </div>
+
+            <div class="control-group paddingForAlerts">
+              <%= f.label :current_buddy, "Current Buddy:", class: 'control-label .col-md-4', style: "margin-top: 10px;" %>
+              <div class="controls .col-md-8">
+                <%= f.text_field :current_buddy, class: 'text-fields' %>
+              </div>
+            </div>
+
+            <div class="field">
+              <%= f.label :skill, "Skills you can Teach:", class: 'control-label .col-md-4', style: "margin-top: 10px;" %>
+              <div class="controls .col-md-8">
+                <%= f.text_field :skill, name: "user[skill][]", class: 'text-fields' %>
+              </div>
+            </div>
+
+            <div class="field">
+              <%= f.label :course_name, "Courses You have taken:", class: 'control-label .col-md-4', style: "margin-top: 10px;" %>
+              <div class="controls .col-md-8">
+                <%= f.text_field :course_name, name: "user[course_name][]", class: 'text-fields' %>
+              </div>
+            </div>
+
+            <div class="field">
+              <%= f.label :goal, "What do you aspire to do?", class: 'control-label .col-md-4', style: "margin-top: 10px;" %>
+              <div class="controls .col-md-8">
+                <%= f.text_area :goal, class: 'text-fields', style: "min-height: 200px; resize: vertical;" %>
+              </div>
+            </div>
+
+            <div class='actions'>
+              <%= f.submit 'Update', class: 'btn btn-outline btn-secondary pull-right' %>
+            </div>
+        <% end %>
+        </div>
+
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
   </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

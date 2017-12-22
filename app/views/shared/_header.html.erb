@@ -1,0 +1,53 @@
+<header id="header" role="banner">
+  <div class="header-background">
+    <div class="container">
+      <div class="pull-left logo-sec">
+        <%= link_to "Tech|Buddy", :root, class: "header-title" %>
+      </div>
+      <div class="pull-right">
+        <div class="login-btns">
+          <ul>
+            <% if user_signed_in? %>
+              <li>
+                <%= link_to current_user do %>
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                  <%= "#{current_user.name}'s Profile" %>
+                <% end %>
+              </li>
+              <li class="signoutLink"><%= link_to destroy_user_session_path, method: :delete do %>
+                  <i class="fa fa-thumbs-o-down" aria-hidden="true"></i> Sign Out
+                <% end %>
+              </li>
+            <% else %>
+              <li>
+                <a href="/users/sign_up">
+                  <i class="fa fa-hand-peace-o" aria-hidden="true"></i> Sign Up!
+                </a>
+              </li>
+              <li>
+                <a href="/users/sign_in">
+                  <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Sign In!!
+                </a>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% if user_signed_in? %>
+    <div class="search-bar">
+      <%= form_tag(search_result_users_path, method: "get", id: "search-form") do %>
+        <div class="input-group" style="width: 100%; margin: 0px auto;">
+         <%= text_field_tag :search, params[:search], placeholder: "Search Buddies", class: "search-input " %>
+
+            <%= button_tag(class: "btn btn-outline btn-secondary input-group-addon", style: "    width:50px;height:49px;padding:0px;margin:0px", name: nil) do %>
+              <i class='fa fa-search' aria-hidden='true'></i>
+            <% end %>
+
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</header>

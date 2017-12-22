@@ -1,9 +1,124 @@
-<p id="notice"><%= notice %></p>
+<div class="row-fluid">
+  <div class="loginpage-cont signupPage">
+    <div class="row loginpage-inner">
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+      <div class="col-md-4">
+        <%= image_tag @user.picture.url(:medium), class: "picture-style" %>
+        <div style="margin-left: 43px;", class="login-btns">
+          <% if @user == current_user %>
+            <ul>
+              <li>
+                <%= link_to edit_user_path(@user) do %>
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                  <%= "Profile" %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to edit_user_registration_path(@user) do %>
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                  <%= "Account" %>
+                <% end %>
+              </li>
+            </ul>
+          <% end %>
+          <% if @user != current_user %>
+            <% if !current_user.buddies.include?(@user) %>
+              <%= link_to 'Buddy-Up', buddyships_path(buddy_id: @user), method: :post, class: 'btn btn-outline btn-secondary', style: "margin-left: 54px;" %>
+            <% else %>
+              <%= link_to 'De-Buddify', {controller: "buddyships", action: :destroy, buddy_id: @user.id}, method: :delete, class: 'btn btn-outline btn-secondary', style: "margin-left: 54px;" %>
+            <% end %>
+          <% end %>
+          <div style="margin-top: 80px; color:#555">
+            <ul style="display: inline">
+              <h4> Buddies: </h4>
+              <% if !@user.buddies.blank? %>
+                <% for buddy in @user.buddies %>
+                  <li style="display: inline; margin: 5px; padding: 0px;">
+                    <%= link_to user_path(buddy) do %>
+                      <%= image_tag buddy.picture.url(:thumb), class: "buddy-picture-style" %>
+                    <% end %>
+                  </li>
+                <% end %>
+              <% end %>
+              <% if !@user.inverse_buddies.blank? %>
+                <% for inverse_buddy in @user.inverse_buddies %>
+                  <li style="display: inline; margin: 5px; padding: 0px;">
+                    <%= link_to user_path(inverse_buddy) do %>
+                      <%= image_tag inverse_buddy.picture.url(:thumb), class: "buddy-picture-style" %>
+                    <% end %>
+                  </li>
+                <% end %>
+              <% end %>
+              <% if @user.buddies.blank? and @user.inverse_buddies.blank? %>
+                <p>No buddies yet! :( </p>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+      <div class="col-md-8 profile">
+        <div>
+          <% if @user != current_user %>
+            <h2><strong>Welcome to <%= @user.name.titleize %>'s Profile</strong></h2>
+          <% else %>
+            <h2><strong><%= @user.name.titleize %>'s Profile</strong></h2>
+          <% end %>
+        </div>
+
+        <div>
+          <i><strong>Phone:</strong></i>
+          <p><%= @user.phone %></p>
+        </div>
+
+        <div>
+          <i><strong>Status:</strong></i>
+          <p><%= @user.status %></p>
+        </div>
+
+        <div>
+          <i><strong>Major:</strong></i>
+          <p><%= @user.major %></p>
+        </div>
+
+        <div>
+          <i><strong>Education Level:</strong></i>
+          <p><%= @user.education_level %></p>
+        </div>
+
+        <div>
+          <i><strong>Current Buddy:</strong></i>
+          <p>
+            <% if @current_buddy.present? %>
+              <%= link_to @current_buddy.name, @current_buddy %>
+            <% end %>
+          </p>
+        </div>
+
+        <div>
+          <i><strong>Skills:</strong></i>
+          <p>
+            <% @user.skill.each do |s| %>  
+              <%= s %>
+            <% end %>
+          </p>
+        </div>
+
+        <div>
+          <i><strong>Courses Taken:</strong></i>
+          <p>
+            <% @user.course_name.each do |course| %>  
+              <%= course %>
+            <% end %>
+          </p>
+        </div>
+
+        <div>
+          <i><strong>Goals:</strong></i>
+          <p style="min-height: 200px;"><%= @user.goal %></p>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>

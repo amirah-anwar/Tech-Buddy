@@ -1,0 +1,40 @@
+<div class="row-fluid">
+  <div class="span12">
+    <div class="loginpage-cont signupPage">
+      <div class="loginpage-inner">
+        <h3>Forgot your password?</h3>
+
+		<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+		  <% if resource.errors.any? %>
+            <div class="alert alert-error alert-block">
+              <button type="button" class="close" data-dismiss="alert">x</button>
+              <ul>
+                <% resource.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="sign-form form-horizontal span10 wrapper-center">
+
+          	<div class="control-group paddingForAlerts">
+              <%= f.label :email, 'Email:', class: 'control-label .col-md-4' %>
+              <div class="controls .col-md-8">
+                <%= f.email_field :email, class: 'text-fields', required: true %>
+              </div>
+            </div>
+
+            <div class='actions'>
+                <%= f.submit 'Send me reset password instructions', class: 'btn btn-outline btn-secondary pull-right' %>
+            </div>
+            <div style="font-style:italic; font-size:12px; color:#555; padding-left:12px; padding-top: 5px">
+              <%= render "devise/shared/links" %>
+            </div>
+
+		<% end %>
+		</div>
+      </div>
+    </div>
+  </div>
+</div>

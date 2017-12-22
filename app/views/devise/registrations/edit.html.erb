@@ -1,0 +1,71 @@
+<div style="margin-left: 58px;">
+  <%= link_to "Back", :back, class: 'btn btn-outline btn-secondary pull-left', style: "margin-top: 40px;" %>
+</div>
+<div class="row-fluid">
+  <div class="span12">
+    <div class="loginpage-cont signupPage">
+      <div class="loginpage-inner">
+        <h3>Update Account</h3>
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <% if resource.errors.any? %>
+            <div class="alert alert-error alert-block">
+              <button type="button" class="close" data-dismiss="alert">x</button>
+              <ul>
+                <% resource.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="sign-form form-horizontal span10 wrapper-center">
+            <div class="control-group paddingForAlerts">
+              <%= f.label :email, 'Email:', class: 'control-label .col-md-4' %>
+              <div class="controls .col-md-8">
+                <%= f.email_field :email, class: 'text-fields', required: true %>
+              </div>
+            </div>
+
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+            <% end %>
+
+            <div class='control-group'>
+              <%= f.label :password, 'Password:', class: 'control-label .col-md-4' %>
+              <i>(leave blank if you don't want to change it)</i><br />
+              <div class="controls .col-md-8">
+                <%= f.password_field :password, class: 'text-fields', autocomplete: 'off' %>
+                <% if @minimum_password_length %>
+                  <em style="padding-left: 12px; margin-top: 0px; font-size: 12px">(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %>
+              </div>
+            </div>
+
+            <div class='control-group'>
+              <%= f.label :password_confirmation, 'Password (Confirm):', class: 'control-label .col-md-4' %>
+              <div class="controls .col-md-8">
+                <%= f.password_field :password_confirmation, class: 'text-fields', autocomplete: 'off'%>
+              </div>
+            </div>
+
+            <div class='control-group'>
+              <%= f.label :current_password,'Current Password:', class: 'control-label .col-md-4' %> <i>(we need your current password to confirm your changes)</i><br />
+              <div class="controls .col-md-8">
+                <%= f.password_field :current_password, class: 'text-fields', autocomplete: "off" %>
+              </div>
+            </div>
+
+            <div class='actions'>
+              <%= f.submit 'Update', class: 'btn btn-outline btn-secondary pull-right' %>
+            </div>
+          <% end %>
+
+          <h3>Cancel my account</h3>
+
+          <p style="text-align: center;">Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-outline btn-secondary-cancel', style: "width: 100%;" %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

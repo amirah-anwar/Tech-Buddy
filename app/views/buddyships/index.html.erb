@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Buddyships</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Buddy</th>
+      <th>Create</th>
+      <th>Destroy</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @buddyships.each do |buddyship| %>
+      <tr>
+        <td><%= buddyship.user_id %></td>
+        <td><%= buddyship.buddy_id %></td>
+        <td><%= buddyship.create %></td>
+        <td><%= buddyship.destroy %></td>
+        <td><%= link_to 'Show', buddyship %></td>
+        <td><%= link_to 'Edit', edit_buddyship_path(buddyship) %></td>
+        <td><%= link_to 'Destroy', buddyship, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Buddyship', new_buddyship_path %>

@@ -1,0 +1,334 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:active, input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important; transition: background-color 600s ease-in-out 0s;
+}
+input:-webkit-autofill { -webkit-box-shadow: 0 0 0px 1000px white transparent !important; background-color: none !important; transition: background-color 600s ease-in-out 0s;}
+input:focus:-webkit-autofill { -webkit-box-shadow: 0 0 0px 1000px transparent inset !important; background-color: none !important; transition: background-color 600s ease-in-out 0s;}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0 0 50px;
+}
+
+/*#header {
+  margin-bottom:50px;
+}*/
+
+.search-bar {
+  width: 800px;
+  margin: 0px auto;
+  margin-top: 50px;
+}
+
+.search-input {
+  height: 50px;
+  width: 90%;
+  border: 1px solid #16e6e9;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #fff;
+  overflow: auto;
+}
+
+.search-result-name {
+  font-size: 20px;
+  color: #555;
+  padding: 20px;
+}
+
+.results {
+  padding:10px;
+  margin: 10px;
+}
+
+.results a:hover {
+  text-decoration: none;
+  .result {
+    background-color: #16e6e9;
+    transition: all .5s;
+    color: white;
+  }
+}
+
+.header-background {
+  width: 100%;
+  min-height: 70px;
+  overflow: hidden;
+  background-color: #f2f2f2;
+}
+
+.logo-container {
+  height: 70px;
+  .logo-sec {
+    a {
+      margin-top: 10px;
+      text-decoration: none;
+      display: inline-block;
+      span {
+        font-size: 10px;
+        color: #555;
+        display: block;
+      }
+    }
+  }
+}
+
+.header-title {
+	font-size: 35px;
+  color: #16e6e9;
+  font-family: courier;
+  font-style: normal;
+}
+
+.header-title:hover {
+	color: #555
+}
+
+.logo-sec {
+  margin-top: 8px;
+  a {
+    text-decoration: none;
+    margin-bottom: 8px;
+    display: inline-block;
+    width: 75px;
+    span {
+      font-size: 10px;
+      color: #555;
+      display: block;
+    }
+  }
+}
+
+.login-btns {
+  ul {
+    padding: 0;
+    margin-top: 25px;
+    li {
+      display: inline-block;
+      list-style: none;
+      padding-right: 20px;
+      font-size: 15px;
+      color: #555;
+      margin-right: 20px;
+      border-right: 1px solid #5b5c5d;
+
+      i {
+        color: #16e6e9;
+        font-size: 20px;
+        margin-right: 10px
+      }
+      a {
+        font-size: 15px;
+        color: #555;
+        text-transform: uppercase;
+      }
+      &.signoutLink {
+        margin-right: 0 !important;
+        border-right: none !important;
+      }
+      &:last-child {
+        border: none;
+        margin-right: 0;
+        padding-right: 0
+      }
+    }
+  }
+}
+
+.login-btns ul li a:hover {
+	text-decoration: none;
+	color: #16e6e9;
+}
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    overflow:hidden;
+    p {
+    font-size: 12px;
+    color: #adafb0;
+    margin: 0px;
+    text-align: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
+}
+
+.loginpage-cont {
+  padding: 5%;
+  .loginpage-inner {
+    background: #f7f8f9;
+    border-bottom: 10px solid #16e6e9;
+    padding-bottom: 20px;
+    h3 {
+    	color: #555;
+    }
+  }
+ }
+
+.control-label {
+	color: #555;
+	font-size: 16px;
+  font-style: italic;
+}
+.sign-form {
+    padding: 30px;
+    width: 61%;
+    margin: 10px auto;
+}
+
+.loginpage-inner h3 {
+	text-align: center;
+    padding-top: 30px;
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: inherit;
+    border: 1px solid #555;
+    transition: all .5s;
+}
+.btn-secondary.btn-outline {
+		margin-top: 10px;
+    color: #555;
+}
+
+.btn-secondary.btn-outline:hover {
+    color: #fff;
+    background-color: #555;
+}
+
+.btn-outline-homepage {
+    background-color: transparent;
+    color: inherit;
+    border: 1px solid #16e6e9;
+    transition: all .5s;
+}
+.btn-homepage.btn-outline-homepage {
+		width: 100%;
+    color: #16e6e9;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.btn-homepage.btn-outline-homepage:hover {
+    color: #fff;
+    background-color: #16e6e9;
+}
+
+.btn-secondary-cancel.btn-outline {
+		margin-top: 10px;
+    color: #555;
+}
+
+.btn-secondary-cancel.btn-outline:hover {
+	color: #fff;
+  background-color: red;
+  border: 1px solid red;
+
+}
+
+.button-heading {
+	margin:0px; 
+	text-align: center; 
+	color: #555;
+	font-size: 15px;
+	font-style: italic;
+}
+
+.user-profile {
+	text-align: center;
+}
+
+.text-fields {
+		width: 100%;
+    border: 1px solid #16e6e9;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 10px 0px 10px;
+}
+
+.homepage-title {
+	display: inline-block;
+	font-size: 32px;
+  color: #16e6e9;
+  font-family: courier;
+  font-style: normal;
+}
+
+.drop-down-select {
+  height: 46px;
+  color: #555;
+  background-color: #fff;
+}
+
+.profile {
+	margin-top: 40px;
+  color: #555;
+  font-size: 18px;
+}
+
+.profile div {
+	margin-bottom: 30px;
+}
+
+.profile div p {
+  height: 50px;
+  border: 1px solid #16e6e9;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 10px 0px 10px;
+  background-color: #fff;
+  overflow: auto;
+}
+
+.picture-style {
+	border: 5px solid #16e6e9;
+  border-radius: 39px;
+  padding: 10px;
+  margin-top: 50px;
+  width: 85%;
+  margin-left: 30px;
+  height: 300px;
+}
+
+.buddies-box {
+  border: 5px solid #16e6e9;
+  border-radius: 39px;
+}
+
+.buddy-picture-style {
+  width: 100px;
+  height: 100px;
+}
+
+.edit-picture-style {
+  border: 5px solid #16e6e9;
+  border-radius: 39px;
+  padding: 10px;
+  width: 200px;
+  height: 200px;
+}
+

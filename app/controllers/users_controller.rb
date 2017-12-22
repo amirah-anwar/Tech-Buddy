@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: [:update, :edit, :show]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :validate_user, only: [:edit, :update]
 
   # GET /users
   # GET /users.json
@@ -10,6 +12,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @current_buddy = User.find_by_id(@user.current_buddy)
   end
 
   # GET /users/new
@@ -61,14 +64,23 @@ class UsersController < ApplicationController
     end
   end
 
+  def search_result
+    @users = User.search params[:search]
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      @user = User.find_by_id params[:id]
+    return redirect_to :root, flash: { error: "User not found" } if @user.blank?
+    end
+
+    def validate_user
+      return redirect_to :root, flash: { error: "You are not allowed to access this page" } unless @user == current_user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name)
+      params.require(:user).permit(:name, :phone, :major, :education_level, :current_buddy, :status, :course_code, :goal, :picture, {skill: [], course_name: []})
     end
 end
